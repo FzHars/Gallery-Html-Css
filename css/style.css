@@ -1,0 +1,235 @@
+@font-face {
+  font-family: "BebasNeue";
+  src: url(../fonts/bebasneue-regular-webfont.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url(../fonts/poppins-webfont.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Italiana";
+  src: url(../fonts/italiana-webfont.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ElMessiri";
+  src: url(../fonts/elmessiri-regular-webfont.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font: "ElMessiri", "Arial Narrow", sans-serif;
+  line-height: 1.8em;
+  background-color: white;
+}
+
+/* header {
+  background-image: url(../img/assets/criss-cross.png);
+  background-position: center;
+  height: auto;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 9999;
+  background-size: cover;
+} */
+
+h1 {
+  font: 4vmax "ElMessiri";
+  line-height: 1.2em;
+  color: blueviolet;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+  margin: 40px auto;
+  text-align: center;
+}
+
+.container {
+  background-color: whitesmoke;
+  /*608px*/
+  width: 70vw;
+  /* width: calc(38rem - 8px); */
+  margin: 70px auto;
+  padding: calc(3em - 8px);
+  /* padding: calc(2em - 10px); */
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.gall li {
+  width: 7.5em;
+  height: 7.5em;
+  border: 2px solid #666;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  float: right;
+  margin-bottom: 10px;
+  margin-right: 3px;
+  position: relative;
+}
+
+.gall li,
+.gall li img,
+.gall li span {
+  border-radius: 50%;
+}
+
+.gall li span {
+  display: block;
+  width: 7.5em;
+  height: 7.5em;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  text-align: center;
+  line-height: 7.5em;
+  color: #ffe77a;
+  text-shadow: 1px 1px 1px #ddd;
+  opacity: 0;
+  transition: 300ms;
+  transform: scale(0) rotate(0);
+}
+
+.gall li a:hover span {
+  opacity: 1;
+  transform: scale(1) rotate(360deg);
+}
+
+/* overlay */
+.overlay {
+  width: 0;
+  height: 0;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  text-align: center;
+  padding: 6.25em 0;
+  transition: 0.8s;
+}
+
+.overlay:target {
+  width: auto;
+  height: auto;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.overlay img {
+  height: 52vh;
+  width: 40vh;
+  /* margin: 50px auto; */
+  box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.5);
+}
+
+.overlay:target img {
+  border-radius: 5%;
+  animation: zoom 1s;
+}
+
+.overlay .close {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  margin: 0 -20px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border: 1px double white;
+  border-radius: 10%;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: calc(1em - 11px);
+  /* opacity: 0; */
+  animation: zoom;
+}
+
+.overlay:target .close {
+  animation: Fade 0.5s 0.5s forwards;
+}
+
+.overlay:target .prev {
+  animation: FadeLeft 0.5s 0.5s forwards;
+}
+
+.overlay:target .next {
+  animation: slideRightFade 0.5s 0.5s forwards;
+}
+
+.next,
+.prev {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  background-image: url(../img/assets/next.png);
+  text-indent: -9999px;
+  border: 1px solid white;
+  bottom: 6vh;
+  /* opacity: 0; */
+  right: 10%;
+  border-radius: 10%;
+  background-color: rgba(0, 0, 0, 0.3);
+  animation: zoom;
+}
+
+.prev {
+  background-image: url(../img/assets/previuose.png);
+  /* margin-left: 100vh; */
+  left: 10%;
+}
+
+.next:active,
+.prev:active {
+  transform: scale(1.2);
+}
+
+.close:hover {
+  transform: scale(1.2);
+}
+
+/* Animasi overlay  */
+@keyframes zoom {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes FadeLeft {
+  0% {
+    opacity: 0;
+    margin-left: -10px;
+  }
+
+  100% {
+    opacity: 1;
+    /* transform: scale(1); */
+    margin-left: 0;
+  }
+}
+
+@keyframes slideRightFade {
+  0% {
+    opacity: 0;
+    margin-right: -20px;
+  }
+
+  100% {
+    opacity: 1;
+    margin-right: 0;
+  }
+}
